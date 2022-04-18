@@ -1,0 +1,14 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+int main()
+{
+	GPIO_InitPin(GPIO_D,GPIO_PIN, direction)
+
+	return 0;
+}

@@ -1,0 +1,42 @@
+15:15:41 **** Incremental Build of configuration Release for project testnew ****
+make all 
+Building file: ../PasswordDoorlock.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"PasswordDoorlock.d" -MT"PasswordDoorlock.o" -c -o "PasswordDoorlock.o" "../PasswordDoorlock.c"
+Finished building: ../PasswordDoorlock.c
+ 
+Building target: testnew.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,testnew.map -mmcu=atmega32 -o "testnew.elf"  ./Button.o ./Clock.o ./GPIO.o ./LCD.o ./Led.o ./PasswordDoorlock.o ./SEVERAL_TASKS.o ./Sebaha.o ./Seg.o ./Servo.o ./Timer.o ./main.o   -lm
+Finished building target: testnew.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S testnew.elf  >"testnew.lss"
+Finished building: testnew.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex testnew.elf  "testnew.hex"
+Finished building: testnew.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex testnew.elf  "testnew.eep"
+Finished building: testnew.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 testnew.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7818 bytes (23.9% Full)
+(.text + .data + .bootloader)
+
+Data:         86 bytes (4.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+15:15:42 Build Finished. 0 errors, 0 warnings. (took 714ms)
+

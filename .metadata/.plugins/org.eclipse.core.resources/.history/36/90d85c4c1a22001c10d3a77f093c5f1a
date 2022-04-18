@@ -1,0 +1,46 @@
+
+
+
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "SEVERAL_TASKS.h"
+#include "Buzzer.h"
+
+void Implement_Button(){
+
+	unit8 value=Get_Button(BUTTON1);
+
+    if(value==1){
+    	PlayNote(40,523.251);
+    }
+
+    value =Get_Button(BUTTON2);
+    if(value==1){
+    	PlayNote(40,580.733);
+    }
+
+
+
+    value =Get_Button(BUTTON3);
+        if(value==1){
+        	PlayNote(40,600.255);
+        }
+
+
+
+    value =Get_Button(BUTTON4);
+    if(value==1){
+    	PlayNote(40,698.456);
+    }
+
+
+}
+
+
+
+

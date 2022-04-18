@@ -1,0 +1,75 @@
+
+
+
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "SEVERAL_TASKS.h"
+
+#include "Clock.h"
+#include "Sebha.h"
+#include "Seg.h"
+
+
+void Implement_Button(){
+	///button 1 increases sebha
+	unit8 value=Get_Button(BUTTON1);
+	if(value==1){
+		Clock_editMode();
+
+
+			//button 2 to increase minutes
+
+            unit8 value2=Get_Button(BUTTON2);
+            if(value2==1){
+            	Clock_IncreaseMinutes();
+            	Clock_editMode();
+            }
+
+
+
+            //button 3 to decrease minutes
+
+            unit8 value3=Get_Button(BUTTON3);
+            if(value3==1){
+            	Clock_DecreaseMinutes();
+            	Clock_editMode();
+            }
+
+
+
+
+            //button 4 to increase hours
+            unit8 value4=Get_Button(BUTTON4);
+            if(value4==1){
+            	Clock_IncreaseHours();
+            	Clock_editMode();
+            }
+
+
+
+
+            //button 5 to decrease hours
+            unit8 value5=Get_Button(BUTTON5);
+            if(value5==1){
+            	Clock_DecreaseHours();
+            	Clock_editMode();
+            }
+
+            _delay_ms(0.7);
+
+
+	}
+	else{
+		Clock();
+	}
+
+}
+
+
+
+

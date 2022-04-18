@@ -1,0 +1,32 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "Clock.h"
+#include "SEVERAL_TASKS.h"
+#include "Seg.h"
+#include "LCD.h"
+#include "Servo.h"
+#include<string.h>
+
+int main()
+{
+
+    lcd_Init();
+    unit8 lcd_x=0;
+    unit8 lcd_y=0;
+    while(1){
+
+    	lcd_write_string("Muhammed Tarek");
+    	rotate90();
+    	rotate00();
+
+    }
+
+
+
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+int main()
+{
+	for(unit8 i=0;i<=7;i++){
+       GPIO_InitPin(GPIO_D, i,GPIO_OUTPUT);
+       GPIO_WritePin(GPIO_D,i,GPIO_HIGH);
+	}
+	return 0;
+}

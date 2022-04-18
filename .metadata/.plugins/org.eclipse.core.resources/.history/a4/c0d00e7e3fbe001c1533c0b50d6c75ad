@@ -1,0 +1,47 @@
+/*
+ * Button.h
+ *
+ *  Created on: Sep 29, 2021
+ *      Author: LENOVO
+ */
+
+#ifndef BUTTON_H_
+#define BUTTON_H_
+
+//BUTTONS
+#define BUTTON1   '1'
+#define BUTTON2   2
+#define BUTTON3   3
+#define BUTTON4   4
+#define BUTTON5   5
+#define BUTTON6   6
+#define BUTTON7   7
+#define BUTTON8   8
+#define BUTTON9   9
+#define BUTTON10 10
+#define BUTTON11 11
+#define BUTTON12 12
+#define BUTTON13 13
+#define BUTTON14 14
+#define BUTTON15 15
+#define BUTTON16 16
+
+//KEYPAD PORT
+#define KEYPAD_PORT GPIO_D
+
+//rows connections
+#define ROW1_PIN GPIO_PIN0
+#define ROW2_PIN GPIO_PIN1
+#define ROW3_PIN GPIO_PIN2
+#define ROW4_PIN GPIO_PIN3
+
+
+//cols connections
+#define COL1_PIN GPIO_PIN4
+#define COL2_PIN GPIO_PIN5
+#define COL3_PIN GPIO_PIN6
+#define COL4_PIN GPIO_PIN7
+
+unit8 Get_Button(unit8 button);
+
+#endif /* BUTTON_H_ */

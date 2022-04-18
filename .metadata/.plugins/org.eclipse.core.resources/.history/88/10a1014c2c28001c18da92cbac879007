@@ -1,0 +1,70 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "Clock.h"
+#include "SEVERAL_TASKS.h"
+#include "Seg.h"
+#include "LCD.h"
+
+void lcd_enable_active(){
+    GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, GPIO_HIGH);
+    _delay_us(1);
+    GPIO_WritePin(LCD_EN_PORT, LCD_EN_PIN, GPIO_LOW);
+    _delay_us(200);
+
+}
+
+
+void lcd_command(unit16 cmd){
+	GPIO_WritePin(LCD_RS_PORT, LCD_RS_PIN, GPIO_LOW);
+    GPIO_WritePin(LCD_PORT, LCD_D4_PIN, ((cmd>>4)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D5_PIN, ((cmd>>5)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D6_PIN, ((cmd>>6)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D7_PIN, ((cmd>>7)&1));
+
+    GPIO_WritePin(LCD_RS_PORT, LCD_RS_PIN, GPIO_LOW);
+
+    lcd_enable_active();
+
+    GPIO_WritePin(LCD_PORT, LCD_D4_PIN, ((cmd>>0)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D5_PIN, ((cmd>>1)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D6_PIN, ((cmd>>2)&1));
+    GPIO_WritePin(LCD_PORT, LCD_D7_PIN, ((cmd>>3)&1));
+
+    lcd_enable_active();
+
+}
+
+
+
+void lcd_Init(){
+
+   GPIO_InitPin(LCD_RS_PORT,LCD_RS_PIN , GPIO_OUTPUT);
+   GPIO_InitPin(LCD_EN_PORT,LCD_EN_PIN , GPIO_OUTPUT);
+
+   GPIO_InitPin(LCD_PORT,LCD_D4_PIN , GPIO_OUTPUT);
+   GPIO_InitPin(LCD_PORT,LCD_D5_PIN , GPIO_OUTPUT);
+   GPIO_InitPin(LCD_PORT,LCD_D6_PIN , GPIO_OUTPUT);
+   GPIO_InitPin(LCD_PORT,LCD_D7_PIN , GPIO_OUTPUT);
+
+   lcd_command(Cursor_home);
+   _delay_ms(1);
+   lcd_command(BIT4_Mode);
+   _delay_ms(1);
+   lcd_command(CLEAR);
+   _delay_ms(1);
+   lcd_command(DisplayON_CursorBlink);
+   _delay_ms(1);
+}
+
+
+void lcd_write_charcter(unit8 charcter){
+	GPIO_WritePin(LCD_RS_PORT, LCD_RS_PIN, GPIO_HIGH);
+}
+
+
+

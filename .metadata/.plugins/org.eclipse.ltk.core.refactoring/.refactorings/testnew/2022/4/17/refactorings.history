@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;testnew/PsswordDoorlock.c&apos; to &apos;PasswordDoorlock.c&apos;" description="Rename resource &apos;PsswordDoorlock.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="PsswordDoorlock.c" name="PasswordDoorlock.c" stamp="1650190018415" updateReferences="true"/>
+</session>

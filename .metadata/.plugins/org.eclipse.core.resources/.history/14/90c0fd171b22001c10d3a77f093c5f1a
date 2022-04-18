@@ -1,0 +1,34 @@
+
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "SEVERAL_TASKS.h"
+#include "Buzzer.h"
+
+
+void PlayNote(float32 duration, float32 frequency){
+
+	unit8 cycles;
+	float32 half_period,wavelength;
+
+	wavelength=(1/frequency)*1000;
+    cycles=duration/wavelength;
+    half_period = wavelength/2;
+
+	GPIO_InitPin(BUZZER_PORT, BUZZER_PIN, GPIO_OUTPUT);
+
+	 for (unit8 i=0;i<cycles;i++){
+		 // Wait 1 half wavelength.
+
+		 // Output 5 V to buzzer_pin.
+		 GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, GPIO_HIGH);
+		 // Wait 1 half wavelength.
+
+		 // Output 0 V to buzzer_pin.
+		 GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, GPIO_LOW);
+	 }
+}

@@ -1,0 +1,37 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "Clock.h"
+#include "SEVERAL_TASKS.h"
+#include "Seg.h"
+#include "LCD.h"
+#include "Servo.h"
+#include<string.h>
+
+void password_checking(){
+    lcd_setCursor(0, 0);
+    lcd_write_string("Please enter password");
+    unit8 charEntered=0;
+    char passEntered[4]="0000";
+    char correctPass[4]=PASSWORD;
+    while(charEntered < 4){ // 4 ??
+       unit8 pressedKey=detect_Button();
+
+       if(pressedKey != 0){
+    	  lcd_setCursor(1, 0);
+          lcd_write_charcter('*');
+          passEntered[charEntered]=pressedKey;
+          charEntered++;
+       }
+
+
+
+    }
+
+
+
+}

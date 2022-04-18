@@ -1,0 +1,25 @@
+/*
+ * Servo.h
+ *
+ *  Created on: Apr 16, 2022
+ *      Author: LENOVO
+ */
+
+#ifndef SERVO_H_
+#define SERVO_H_
+
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+#include "Button.h"
+#include "Clock.h"
+#include "SEVERAL_TASKS.h"
+#include "Seg.h"
+#include "LCD.h"
+#include<string.h>
+
+
+#endif /* SERVO_H_ */

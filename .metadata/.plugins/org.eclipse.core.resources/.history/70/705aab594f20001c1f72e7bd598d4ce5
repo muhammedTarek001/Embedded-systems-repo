@@ -1,0 +1,38 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+int main()
+{
+    GPIO_InitPin(GPIO_B,GPIO_PIN7,GPIO_OUTPUT);
+    GPIO_InitPin(GPIO_A,GPIO_PIN4,GPIO_OUTPUT);
+    GPIO_InitPin(GPIO_A,GPIO_PIN5,GPIO_OUTPUT);
+    GPIO_InitPin(GPIO_A,GPIO_PIN6,GPIO_OUTPUT);
+
+    GPIO_InitPin(GPIO_C,GPIO_PIN7,GPIO_INPUT);
+    unit8 count=1;
+    unit8 value=0;
+    while(1){
+      value =GPIO_GetPin(GPIO_C,GPIO_PIN7);
+      if(value==1){
+    	  if(count>4){
+    		  count=1;
+    		  closeAll();
+    		  _delay_ms(30);
+    	  }
+    	  else{
+    		  ledOn(count);
+    		  count++;
+    		  _delay_ms(30);
+    	  }
+      }
+      else if(value==0){
+          closeAll();
+      }
+    }
+	return 0;
+}

@@ -1,0 +1,31 @@
+#include"GPIO.h"
+#include "STD_Types.h"
+#include "Utils.h"
+#include"Led.h"
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+int main()
+{
+	for(unit8 i=0;i<=3;i++){
+		GPIO_InitPin(GPIO_D,i,GPIO_INPUT);
+	}
+	for(unit8 i=3;i<=7;i++){
+		GPIO_InitPin(GPIO_D,i,GPIO_OUTPUT);
+		GPIO_WritePin(GPIO_D,i,GPIO_HIGH);
+	}
+
+
+	while(1){
+        unit8 value=GPIO_GetPin(GPIO_D,GPIO_PIN0);
+        if(value==0){
+    		ledOff(REDLED);
+        }
+      else if(value==1){
+            ledOn(REDLED);
+        }
+	}
+
+	return 0;
+}
